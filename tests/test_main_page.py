@@ -20,7 +20,7 @@ class TestMainPage:
         # self.link_to_cabinet = browser.current_url      # варіант викладача
         # page = MainPage(browser, self.link_to_cabinet)  # варіант викладача
         page = MainPage(browser, sets.PROD_SERVER)        # стандартний варіант
-        page.is_logo()
+        page.is_logo_header()
         page.is_search_category()
         page.is_search_category_web_cameras()
         page.is_search_input()

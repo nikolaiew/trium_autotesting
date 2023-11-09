@@ -4,8 +4,9 @@ import inspect
 
 class MainPage(base_page.BasePage):
 
-    def is_logo(self):
-        assert self.is_element_present(*locators.BasePageLocators.LOGO), \
+# header
+    def is_logo_header(self):
+        assert self.is_element_present(*locators.BasePageLocators.LOGO_HEADER), \
             "The element LOGO is not present"
         print(f"\n{inspect.currentframe().f_code.co_name} - Ok")
 
@@ -90,37 +91,39 @@ class MainPage(base_page.BasePage):
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_golovna_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.GOLOVNA), \
+        assert self.is_element_present(*locators.BasePageLocators.GOLOVNA_BUTTON), \
             "The button 'ГОЛОВНА' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_pro_nas_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.PRO_NAS), \
+        assert self.is_element_present(*locators.BasePageLocators.PRO_NAS_BUTTON), \
             "The button 'ПРО НАС' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_dostavka_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.DOSTAVKA), \
+        assert self.is_element_present(*locators.BasePageLocators.DOSTAVKA_BUTTON), \
             "The button 'ДОСТАВКА' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_oplata_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.OPLATA), \
+        assert self.is_element_present(*locators.BasePageLocators.OPLATA_BUTTON), \
             "The button 'ОПЛАТА' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_blog_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.BLOG), \
+        assert self.is_element_present(*locators.BasePageLocators.BLOG_BUTTON), \
             "The button 'БЛОГ' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_kontakty_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.KONTAKTY), \
+        assert self.is_element_present(*locators.BasePageLocators.KONTAKTY_BUTTON), \
             "The button 'КОНТАКТИ' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_akcii_button(self):
-        assert self.is_element_present(*locators.BasePageLocators.AKCII), \
+        assert self.is_element_present(*locators.BasePageLocators.AKCII_BUTTON), \
             "The button 'АКЦІІ' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
+
+# footer
 
