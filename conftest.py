@@ -13,7 +13,7 @@ def pytest_addoption(parser):
                      help='By default is chrome, but you can set --browser_name="firefox"')
 
 
-@pytest.fixture
+@pytest.fixture(scope="class")
 def browser(request):
     browser_mode = request.config.getoption("browser_mode")
     if browser_mode == "gui":
@@ -28,12 +28,12 @@ def browser(request):
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        opts_chrome.add_argument('--window-size=1920,1080')  # ('--start-maximized')
+        opts_chrome.add_argument('--window-size=1440,768')  # ('--start-maximized')
         browser = webdriver.Chrome(options=opts_chrome)
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
-        opts_firefox.add_argument('--width=1920')
-        opts_firefox.add_argument('--height=1080')
+        opts_firefox.add_argument('--width=1440')
+        opts_firefox.add_argument('--height=768')
         browser = webdriver.Firefox(options=opts_firefox)
     else:
         raise pytest.UsageError('--browser_name should be "chrome" or "firefox"')
