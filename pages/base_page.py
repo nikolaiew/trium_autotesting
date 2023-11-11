@@ -31,10 +31,15 @@ class BasePage:
         except NoSuchElementException: return False
         return True
 
-    def elements_are_present(self, how, what):
+    def are_elements_present(self, how, what):
         try: self.browser.find_elements(how, what)
         except NoSuchElementException: return False
         return True
+
+    def qty_of_elements(self, how, what):
+        try: qty = len(self.browser.find_elements(how, what))
+        except NoSuchElementException: return False
+        return qty
 
     def is_element_appears_after_while(self, how, what, timeout):
         try:

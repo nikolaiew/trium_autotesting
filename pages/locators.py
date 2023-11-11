@@ -31,18 +31,38 @@ class BasePageLocators:
 
 #  footer
     LOGO_FOOTER = (By.XPATH, '//div[@class="hlogo"]/img[@class="img-responsive"]')
+
     PRO_NAS_FOOTER_BUTTON = (By.XPATH, '//div[@class="middle-footer ua"]//a[@href="about"]')
     DOSTAVKA_FOOTER_BUTTON = (By.XPATH, '//div[@class="middle-footer ua"]//a[@href="dostavka"]')
     OPLATA_FOOTER_BUTTON = (By.XPATH, '//div[@class="middle-footer ua"]//a[@href="oplata"]')
     BLOG_FOOTER_BUTTON = (By.XPATH, '//div[@class="middle-footer ua"]//a[@href="blog"]')
     KONTAKTY_FOOTER_BUTTON = (By.XPATH, '//div[@class="middle-footer ua"]//ul[1]//a[@href="contacts"]')
 
-    NOUTBUKY_BV = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[1]')
-    MONITORY_BV = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[2]')
-    KOMPLEKT_PK = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[3]')
-    SYS_BLOK_BV = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[4]')
-    ZAPCHASTYNY = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[5]')
+    NOUTBUKY_BV_FOOTER = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[1]')
+    MONITORY_BV_FOOTER = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[2]')
+    KOMPLEKT_BV_FOOTER = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[3]')
+    SYS_BLOK_BV_FOOTER = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[4]')
+    ZAPCHASTYNY_FOOTER = (By.XPATH, '//div[@class="middle-footer ua"]//aside//li[5]')
 
-# class MainPage:
+
+class MainPageLocators:
+    MAIN_SLIDER = (By.XPATH, '//div[@id="slideshow0"]')
+    MAIN_CAT_LEFT = (By.XPATH, '//div[@id="cat-img"]//div[@class="owl-prev"]')
+    MAIN_CAT_RIGHT = (By.XPATH, '//div[@id="cat-img"]//div[@class="owl-next"]')
+    MAIN_CAT_PANEL = (By.XPATH, '//div[@class="homecategory"]//div[@class="row rless"]')
+    MAIN_CAT_ITEMS = (By.XPATH, '//div[@class="homecategory"]//div[@class="owl-item"]')  # 25
+    POPULAR_PANEL = (By.XPATH, '//div[@id="feature"]')
+    POPULAR_7 = (By.XPATH, '//div[@class="owl-item"][2]/div/div[2]')
+    BANNER = (By.XPATH, '//div[@class="sellbanner"]')
+    BV_NOUTBUKY = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][1]')
+    BV_BLOKY_ZHYVLENNIA = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][2]')
+    BV_KOMPLEKT = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][3]')
+    BV_SYS_BLOKY = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][4]')
+    BV_MONOBLOKY = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][5]')
+    BV_MONITORY = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][6]')
+    BV_ZAPCHASTYNY = (By.XPATH, '//div[@id="catli"]//div[@class="owl-item"][7]')
+    BV_SYS_BLOKY_6 = (By.XPATH, '//div[@id="tab-4"]//div[6]')
+    ARTICLES = (By.XPATH, '//div[@class="blog_item"]')  # 3
+    TEXT_BLOCK = (By.XPATH, '//div[@class="seo-text-home"]')
 
 
