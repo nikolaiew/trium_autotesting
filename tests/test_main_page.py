@@ -1,5 +1,4 @@
 import pytest
-import random
 from ..pages.base_page import BasePage
 from ..pages.main_page import MainPage
 from ..settings import sets
@@ -8,11 +7,10 @@ from ..settings import sets
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.main_page
-class TestMainPage:
+class aTestMainPage:
 
-    def setup_method(self):  # якась заглушка? (запитати)
-        hash_name = ("%032x" % random.getrandbits(128))[:6] + 'test'
-        self.email_for_subscribe = f"{hash_name}@mail.com"
+    def setup_method(self):
+        pass
 
     def test_get_main_page(self, browser):
         page = BasePage(browser, sets.PROD_SERVER)
@@ -28,6 +26,8 @@ class TestMainPage:
         page.is_search_input()
         page.is_search_button()
         page.is_account_button()
+        page.is_signup_button()
+        page.is_login_button()
         page.is_compare_button()
         page.is_cart_button()
         page.is_language_button()
@@ -70,6 +70,7 @@ class TestMainPage:
         # self.link_to_cabinet = browser.current_url      # варіант викладача
         # page = MainPage(browser, self.link_to_cabinet)  # варіант викладача
         page = MainPage(browser, sets.PROD_SERVER)        # стандартний варіант
+        page.is_logo_footer()
         page.is_pro_nas_footer_button()
         page.is_dostavka_footer_button()
         page.is_oplata_footer_button()
@@ -80,6 +81,4 @@ class TestMainPage:
         page.is_komplekt_bv_footer_button()
         page.is_sys_blok_bv_footer_button()
         page.is_zapchastyny_footer_button()
-
-
 

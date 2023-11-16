@@ -37,6 +37,20 @@ class MainPage(base_page.BasePage):
             "The button 'Кабінет' is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
+    def is_signup_button(self):
+        assert self.click_element(*locators.BasePageLocators.ACCOUNT_BUTTON), \
+            "The button 'Кабінет' is not present"
+        assert self.is_element_present(*locators.BasePageLocators.SIGNUP_BUTTON), \
+            "The button 'Реєстрація' is not present"
+        print(f"{inspect.currentframe().f_code.co_name} - Ok")
+
+    def is_login_button(self):
+        assert self.click_element(*locators.BasePageLocators.ACCOUNT_BUTTON), \
+            "The button 'Кабінет' is not present"
+        assert self.is_element_present(*locators.BasePageLocators.LOGIN_BUTTON), \
+            "The button 'Авторизація' is not present"
+        print(f"{inspect.currentframe().f_code.co_name} - Ok")
+
     def is_compare_button(self):
         assert self.is_element_present(*locators.BasePageLocators.COMPARE_BUTTON), \
             "The button 'Порівняння' is not present"
@@ -129,7 +143,7 @@ class MainPage(base_page.BasePage):
     def is_main_slider(self):
         assert self.is_element_present(*locators.MainPageLocators.MAIN_SLIDER), \
             "The MAIN SLIDER is not present"
-        print(f"{inspect.currentframe().f_code.co_name} - Ok")
+        print(f"\n{inspect.currentframe().f_code.co_name} - Ok")
 
     def is_main_cat_left_button(self):
         assert self.is_element_present(*locators.MainPageLocators.MAIN_CAT_LEFT), \
@@ -271,3 +285,4 @@ class MainPage(base_page.BasePage):
         assert self.is_element_present(*locators.BasePageLocators.ZAPCHASTYNY_FOOTER), \
             "The button 'Запчастини б/в' (footer) is not present"
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
+

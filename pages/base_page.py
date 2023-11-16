@@ -26,6 +26,14 @@ class BasePage:
     def refresh(self):
         self.browser.refresh()
 
+    def scroll_page(self, scrl):
+        self.browser.execute_script("window.scrollTo(0," + str(scrl) + ")")
+        # y = 500
+        # for timer in range(0, 50):
+        #     self.browser.execute_script("window.scrollTo(0, " + str(y) + ")")
+        #     y += 500
+        #     self.explicitly_wait(1)
+
     def is_element_present(self, how, what):
         try: self.browser.find_element(how, what)
         except NoSuchElementException: return False
@@ -36,7 +44,7 @@ class BasePage:
         except NoSuchElementException: return False
         return True
 
-    def qty_of_elements(self, how, what):
+    def qty_of_elements(self, how, what):  # повертає кількість елементів за однаковим локатором
         try: qty = len(self.browser.find_elements(how, what))
         except NoSuchElementException: return False
         return qty
