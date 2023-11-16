@@ -73,7 +73,7 @@ class OrderPage(base_page.BasePage):
         print(f"\n{inspect.currentframe().f_code.co_name} - Ok [{cart_price}*{cart_qty}={cart_sum}]")
 
     def add_pop_item_to_cart(self):
-        self.scroll_page(1400)  # для firefox
+        self.scroll_page(1000)  # для firefox
         self.explicitly_wait(2)
         assert self.hover_actions(*locators.MainPageLocators.POPULAR_7), \
             "The item POPULAR_7 is not present or intractable"
@@ -86,6 +86,8 @@ class OrderPage(base_page.BasePage):
         print(f"{inspect.currentframe().f_code.co_name} - Ok")
 
     def check_del_item(self):
+        start_qty_of_items = 0
+        actual_qty_of_items = 0
         try: start_qty_of_items = self.qty_of_elements(*locators.OrderPageLocators.QTY_OF_ITEMS)
         except: print("ERROR: no items to delete - the cart is empty")
         assert self.click_element(*locators.OrderPageLocators.ITEM_1_DEL), \
@@ -98,7 +100,7 @@ class OrderPage(base_page.BasePage):
         print(f"\n{inspect.currentframe().f_code.co_name} - Ok [{start_qty_of_items}-1={actual_qty_of_items}]")
 
     def add_bv_item_to_cart(self):
-        self.scroll_page(1600)  # для firefox
+        self.scroll_page(1400)  # для firefox
         self.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
         assert self.click_element(*locators.MainPageLocators.BV_BLOKY_ZHYVLENNIA), \
             "The category 'БЛОКИ ЖИВЛЕННЯ ... Б/В' is not present or intractable"

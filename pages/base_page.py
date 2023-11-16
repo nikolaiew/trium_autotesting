@@ -26,7 +26,7 @@ class BasePage:
     def refresh(self):
         self.browser.refresh()
 
-    def scroll_page(self, scrl):
+    def scroll_page(self, scrl):  # разовий скрол на потрібну строку (в пікселях)
         self.browser.execute_script("window.scrollTo(0," + str(scrl) + ")")
         # y = 500
         # for timer in range(0, 50):

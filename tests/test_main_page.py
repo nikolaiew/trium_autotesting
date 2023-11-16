@@ -7,7 +7,7 @@ from ..settings import sets
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.main_page
-class aTestMainPage:
+class TestMainPage:
 
     def setup_method(self):
         pass

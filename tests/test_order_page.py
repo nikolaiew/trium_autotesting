@@ -38,7 +38,7 @@ class TestOrderPage:
         global cat_item_price
         cat_item_price = page.add_cat_item_to_cart()
         page.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
-        page.scroll_page(400)                                     # скролл
+        page.scroll_page(400)                                     # скролл для зручності перегляду
 
     def test_plus_qty(self, browser):
         # self.link_to_cabinet = browser.current_url              # варіант викладача
@@ -71,7 +71,7 @@ class TestOrderPage:
         page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
         page.click_on_logo()
         page.add_pop_item_to_cart()
-        page.scroll_page(400)                                     # скролл
+        page.scroll_page(400)                                     # скролл для зручності перегляду
         page.explicitly_wait(4)
 
     def test_del_item_from_cart(self, browser):
@@ -86,7 +86,7 @@ class TestOrderPage:
         page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
         page.click_on_logo()
         page.add_bv_item_to_cart()
-        page.scroll_page(400)                                     # скролл
+        page.scroll_page(400)                                     # скролл для зручності перегляду
         page.explicitly_wait(4)
 
     def test_check_amount(self, browser):
@@ -103,10 +103,11 @@ class TestOrderPage:
         page.scroll_page(200)
         page.explicitly_wait(5)
 
-    def atest_checkout(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
-        page.checkout()
-        page.explicitly_wait(10)
+    # def test_checkout(self, browser):                         # тест виконання реального замовлення
+    #     # self.link_to_cabinet = browser.current_url              # варіант викладача
+    #     # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
+    #     page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+    #     page.checkout()
+    #     page.explicitly_wait(10)
+
 

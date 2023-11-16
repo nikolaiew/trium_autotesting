@@ -8,7 +8,7 @@ from ..settings import sets
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.signup_login_page
-class aTestSignupLoginPage:
+class TestSignupLoginPage:
 
     def setup_method(self):
         hash_name = 'test_' + ("%032x" % random.getrandbits(128))[:6]
