@@ -10,17 +10,14 @@ from ..settings import sets
 @pytest.mark.order_page
 class TestOrderPage:
 
-    def setup_method(self):
-        pass
-
     def test_get_main_page(self, browser):
         page = BasePage(browser, sets.PROD_SERVER)
         page.open()
+        # page.scroll_page(600, 3)  # тест методу для багаторазового скролінгу
+        # page.make_screenshot('scr1')  # тест методу для скріншотів
 
     def test_login_to_cabinet(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = SignupLoginPage(browser, sets.PROD_SERVER)         # стандартний варіант
+        page = SignupLoginPage(browser, sets.PROD_SERVER)
         page.click_account_button()
         page.click_login_button()
         page.is_h1_login()
@@ -31,76 +28,60 @@ class TestOrderPage:
         page = OrderPage(browser, sets.PROD_SERVER)
         page.click_on_logo()
 
+    def test_clean_cart_in_header(self, browser):
+        page = OrderPage(browser, sets.PROD_SERVER)
+        page.clean_cart_in_header()
+
     def test_add_cat_item_to_cart(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         global cat_item_price
         cat_item_price = page.add_cat_item_to_cart()
         page.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
-        page.scroll_page(400)                                     # скролл для зручності перегляду
+        page.scroll(400)                                     # скролл для зручності перегляду
 
     def test_plus_qty(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.check_qty(page.plus_qty(qty=2))
 
     def test_minus_qty(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.check_qty(page.minus_qty(qty=1))
         page.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
 
     def test_item_price(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.check_item_price(cat_item_price)
 
     def test_item_sum(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.check_item_sum()
 
     def test_add_pop_item_to_cart(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.click_on_logo()
         page.add_pop_item_to_cart()
-        page.scroll_page(400)                                     # скролл для зручності перегляду
+        page.scroll(400)                                     # скролл для зручності перегляду
         page.explicitly_wait(4)
 
     def test_del_item_from_cart(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.check_del_item()
 
     def test_add_bv_item_to_cart(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.click_on_logo()
         page.add_bv_item_to_cart()
-        page.scroll_page(400)                                     # скролл для зручності перегляду
+        page.scroll(400)                                     # скролл для зручності перегляду
         page.explicitly_wait(4)
 
     def test_check_amount(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.check_amount()
 
     def test_input_data_for_order(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = OrderPage(browser, sets.PROD_SERVER)               # стандартний варіант
+        page = OrderPage(browser, sets.PROD_SERVER)
         page.input_data_for_order(sets.FIRSTNAME, sets.LASTNAME, sets.PHONE, sets.CITY, sets.ADDRESS)
-        page.scroll_page(200)
+        # page.scroll(200)
         page.explicitly_wait(5)
 
     # def test_checkout(self, browser):                         # тест виконання реального замовлення

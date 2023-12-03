@@ -9,17 +9,12 @@ from ..settings import sets
 @pytest.mark.main_page
 class TestMainPage:
 
-    def setup_method(self):
-        pass
-
     def test_get_main_page(self, browser):
         page = BasePage(browser, sets.PROD_SERVER)
         page.open()
 
     def test_main_page_header(self, browser):
-        # self.link_to_cabinet = browser.current_url      # варіант викладача
-        # page = MainPage(browser, self.link_to_cabinet)  # варіант викладача
-        page = MainPage(browser, sets.PROD_SERVER)        # стандартний варіант
+        page = MainPage(browser, sets.PROD_SERVER)
         page.is_logo_header()
         page.is_search_cat()
         page.is_search_cat_web_cameras()
@@ -46,14 +41,12 @@ class TestMainPage:
         page.is_akcii_button()
 
     def test_main_page_body(self, browser):
-        # self.link_to_cabinet = browser.current_url      # варіант викладача
-        # page = MainPage(browser, self.link_to_cabinet)  # варіант викладача
-        page = MainPage(browser, sets.PROD_SERVER)        # стандартний варіант
+        page = MainPage(browser, sets.PROD_SERVER)
         page.is_main_slider()
         page.is_main_cat_left_button()
         page.is_main_cat_right_button()
         page.is_main_cat_panel()
-        page.is_main_cat_items_qty()  # qty
+        page.is_main_cat_items_qty()  # перевірка кількості
         page.is_popular_panel()
         page.is_popular_7()
         page.is_banner()
@@ -67,9 +60,7 @@ class TestMainPage:
         page.is_bv_sys_bloky_6()
 
     def test_main_page_footer(self, browser):
-        # self.link_to_cabinet = browser.current_url      # варіант викладача
-        # page = MainPage(browser, self.link_to_cabinet)  # варіант викладача
-        page = MainPage(browser, sets.PROD_SERVER)        # стандартний варіант
+        page = MainPage(browser, sets.PROD_SERVER)
         page.is_logo_footer()
         page.is_pro_nas_footer_button()
         page.is_dostavka_footer_button()

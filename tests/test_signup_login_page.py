@@ -19,9 +19,7 @@ class TestSignupLoginPage:
         page.open()
 
     def test_signup(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = SignupLoginPage(browser, sets.PROD_SERVER)         # стандартний варіант
+        page = SignupLoginPage(browser, sets.PROD_SERVER)
         page.click_account_button()
         page.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
         page.click_signup_button()
@@ -34,9 +32,7 @@ class TestSignupLoginPage:
         page.explicitly_wait(5)
 
     def test_logout(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = SignupLoginPage(browser, sets.PROD_SERVER)         # стандартний варіант
+        page = SignupLoginPage(browser, sets.PROD_SERVER)
         page.click_account_button()
         page.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
         page.click_logout_button()
@@ -44,9 +40,7 @@ class TestSignupLoginPage:
         page.explicitly_wait(5)
 
     def test_login(self, browser):
-        # self.link_to_cabinet = browser.current_url              # варіант викладача
-        # page = SignupLoginPage(browser, self.link_to_cabinet)   # варіант викладача
-        page = SignupLoginPage(browser, sets.PROD_SERVER)         # стандартний варіант
+        page = SignupLoginPage(browser, sets.PROD_SERVER)
         page.click_account_button()
         page.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
         page.click_login_button()

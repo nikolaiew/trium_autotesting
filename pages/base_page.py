@@ -1,11 +1,11 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import ElementNotInteractableException
 from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.support import expected_conditions as EC
-# from ..pages.locators import BasePageLocators
 from ..settings import sets
 import time
 
@@ -26,13 +26,15 @@ class BasePage:
     def refresh(self):
         self.browser.refresh()
 
-    def scroll_page(self, scrl):  # разовий скрол на потрібну строку (в пікселях)
+    def scroll(self, scrl):  # разовий скрол на потрібний рядок сторінки (в пікселях)
         self.browser.execute_script("window.scrollTo(0," + str(scrl) + ")")
-        # y = 500
-        # for timer in range(0, 50):
-        #     self.browser.execute_script("window.scrollTo(0, " + str(y) + ")")
-        #     y += 500
-        #     self.explicitly_wait(1)
+
+    def scroll_page(self, page_height=600, qty=10):  # скрол всієї сторінки (для підгрузки/відображення елементів)
+        scrl = page_height
+        for timer in range(0, qty):
+            self.browser.execute_script("window.scrollTo(0, " + str(scrl) + ")")
+            scrl += page_height
+            self.explicitly_wait(1)
 
     def is_element_present(self, how, what):
         try: self.browser.find_element(how, what)
@@ -87,10 +89,12 @@ class BasePage:
         except NoSuchElementException: return False
         return text
 
+    def make_screenshot(self, method_name):
+        self.browser.find_element(By.TAG_NAME, 'body').screenshot(f"{method_name}.png")
+
     def login_to_cabinet(self, user_name, user_password):
         pass
 
     def logout_from_cabinet(self):
         pass
-
 

@@ -16,6 +16,8 @@ class BasePageLocators:
     LOGIN_BUTTON = (By.XPATH, '//a[@href="index.php?route=account/login"]')
     COMPARE_BUTTON = (By.XPATH, '//a[@href="compare"]')
     CART_BUTTON = (By.XPATH, '//div[@id="cart"]')
+    CART_ITEM_QTY = (By.XPATH, '//span[@class="total_item"]')
+    CART_ITEM_DELETE = (By.XPATH, '//div[1]/div[@class="pull-right"]/button')
     LANGUAGE_BUTTON = (By.XPATH, '//div[@id="form-language"]/div/button')
     LANGUAGE_UA_BUTTON = (By.XPATH, '//ul[@class="dropdown-menu"]/li[1]/button')
     LANGUAGE_RU_BUTTON = (By.XPATH, '//ul[@class="dropdown-menu"]/li[2]/button')

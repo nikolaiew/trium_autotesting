@@ -5,6 +5,21 @@ import inspect
 
 class OrderPage(base_page.BasePage):
 
+    def clean_cart_in_header(self):
+        flag = False
+        while int(self.get_text(*locators.BasePageLocators.CART_ITEM_QTY)) > 0:
+            flag = True
+            assert self.click_element(*locators.BasePageLocators.CART_BUTTON), \
+                "The button CART is not present or intractable"
+            self.explicitly_wait(1)
+            assert self.click_element(*locators.BasePageLocators.CART_ITEM_DELETE), \
+                "The button CART_ITEM_DELETE is not present or intractable"
+            self.explicitly_wait(2)
+        if flag:
+            print(f"{inspect.currentframe().f_code.co_name} - Ok")
+        else:
+            print(f"{inspect.currentframe().f_code.co_name}: no items to delete!")
+
     def click_on_logo(self):
         assert self.click_element(*locators.BasePageLocators.LOGO_HEADER), \
             "The element LOGO HEADER is not present or intractable"
@@ -19,7 +34,7 @@ class OrderPage(base_page.BasePage):
         self.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
         assert self.click_element(*locators.BasePageLocators.MYSHKY), \
             "The category 'Мишки' is not present or intractable"
-        self.scroll_page(800)  # для firefox
+        self.scroll(800)  # для firefox
         self.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
         price = int(self.get_text(*locators.CategoryPageLocators.MYSHKA_12_PRICE)[:-4])  # 130
         assert self.hover_actions(*locators.CategoryPageLocators.MYSHKA_12), \
@@ -73,7 +88,7 @@ class OrderPage(base_page.BasePage):
         print(f"\n{inspect.currentframe().f_code.co_name} - Ok [{cart_price}*{cart_qty}={cart_sum}]")
 
     def add_pop_item_to_cart(self):
-        self.scroll_page(1000)  # для firefox
+        self.scroll(1050)  # для firefox
         self.explicitly_wait(2)
         assert self.hover_actions(*locators.MainPageLocators.POPULAR_7), \
             "The item POPULAR_7 is not present or intractable"
@@ -100,8 +115,8 @@ class OrderPage(base_page.BasePage):
         print(f"\n{inspect.currentframe().f_code.co_name} - Ok [{start_qty_of_items}-1={actual_qty_of_items}]")
 
     def add_bv_item_to_cart(self):
-        self.scroll_page(1400)  # для firefox
-        self.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
+        self.scroll(1900)  # для firefox
+        self.explicitly_wait(2)
         assert self.click_element(*locators.MainPageLocators.BV_BLOKY_ZHYVLENNIA), \
             "The category 'БЛОКИ ЖИВЛЕННЯ ... Б/В' is not present or intractable"
         self.explicitly_wait(sets.DEMO_DELAY)  # Демо-затримка
