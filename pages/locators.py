@@ -177,7 +177,11 @@ class CategoryPageLocators:
 
 
 class SearchPageLocators:
-    pass
+    SEARCH_PANEL_ITEMS = (By.XPATH, '//div[@class="row cpagerow rless"]/div')
+    SEARCH_PANEL_ITEM_1 = (By.XPATH, '//div[@class="row cpagerow rless"]/div[1]//h4/a')
+    SEARCH_PANEL_ITEM = []
+    for i in range(1, 6):
+        SEARCH_PANEL_ITEM.append((By.XPATH, '//div[@class="row cpagerow rless"]/div[' + str(i) + ']//h4/a'))
 
 
 class ProductPageLocator:
